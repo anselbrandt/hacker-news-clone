@@ -15,7 +15,14 @@ import connectRedis from "connect-redis";
 import Redis from "ioredis";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
+import { Post } from "./entities/Post";
+import { User } from "./entities/User";
+import { Updoot } from "./entities/Updoot";
 import { HelloResolver } from "./resolvers/hello";
+import { PostResolver } from "./resolvers/post";
+import { UserResolver } from "./resolvers/user";
+import { createUserLoader } from "./utils/createUserLoader";
+import { createUpdootLoader } from "./utils/createUpdootLoader";
 
 const main = async () => {
   const conn = await createConnection({
@@ -26,7 +33,7 @@ const main = async () => {
     logging: true,
     synchronize: true,
     migrations: [path.join(__dirname, "./migrations/*")],
-    entities: [],
+    entities: [Post, User, Updoot],
   });
 
   await conn.runMigrations();
@@ -68,13 +75,15 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver],
+      resolvers: [HelloResolver, PostResolver, UserResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({
       req,
       res,
       redis,
+      userLoader: createUserLoader(),
+      updootLoader: createUpdootLoader(),
     }),
   });
   apolloServer.applyMiddleware({ app, cors: false });
