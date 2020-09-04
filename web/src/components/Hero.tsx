@@ -7,5 +7,5 @@ export const Hero = ({ title }) => (
 );
 
 Hero.defaultProps = {
-  title: "with-chakra-ui",
+  title: "ansel brandt",
 };
