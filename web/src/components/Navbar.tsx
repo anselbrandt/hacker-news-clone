@@ -4,13 +4,15 @@ import NextLink from "next/link";
 import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import { useApolloClient } from "@apollo/client";
+import { DarkModeSwitch } from "./DarkModeSwitch";
 
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+  const spacing = 5;
   const { colorMode } = useColorMode();
-  const bgColor = { light: "black", dark: "white" };
-  const color = { light: "white", dark: "black" };
+  const bgColor = { light: "white", dark: "#171923" };
+  // const color = { light: "white", dark: "black" };
 
   const [logout, { loading: logoutFetching }] = useLogoutMutation();
   const apolloClient = useApolloClient();
@@ -23,29 +25,29 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
     body = (
       <Flex justify="flex-end">
         <NextLink href="/">
-          <Link mr={10}>Home</Link>
+          <Link mr={spacing}>Home</Link>
         </NextLink>
         <NextLink href="/posts">
-          <Link mr={10}>Posts</Link>
+          <Link mr={spacing}>Posts</Link>
         </NextLink>
         <NextLink href="/login">
-          <Link mr={10}>Login</Link>
+          <Link mr={spacing}>Login</Link>
         </NextLink>
         <NextLink href="/register">
-          <Link mr={10}>Register</Link>
+          <Link mr={spacing}>Register</Link>
         </NextLink>
       </Flex>
     );
   } else {
     body = (
-      <Flex justify="flex-end" mr={10}>
+      <Flex justify="flex-end" mr={spacing}>
         <NextLink href="/">
-          <Link mr={10}>Home</Link>
+          <Link mr={spacing}>Home</Link>
         </NextLink>
         <NextLink href="/posts">
-          <Link mr={10}>Posts</Link>
+          <Link mr={spacing}>Posts</Link>
         </NextLink>
-        <Box mr={10}>{data.me.username}</Box>
+        <Box mr={spacing}>{data.me.username}</Box>
         <Button
           onClick={async () => {
             await logout();
@@ -65,10 +67,14 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       top={0}
       zIndex={1}
       bg={bgColor[colorMode]}
-      color={color[colorMode]}
+      // color={color[colorMode]}
       p={4}
+      width="100%"
     >
-      {body}
+      <Flex justifyContent="flex-end">
+        {body}
+        <DarkModeSwitch mainColor={"purple"} />
+      </Flex>
     </Box>
   );
 };

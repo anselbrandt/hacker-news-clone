@@ -22,6 +22,7 @@ import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 
 const Index = () => {
+  const mainColor = "purple";
   const { data, loading } = usePostsQuery({
     variables: {
       limit: 10,
@@ -41,7 +42,7 @@ const Index = () => {
 
           <List spacing={3} my={0}>
             <ListItem>
-              <ListIcon icon="check-circle" color="green.500" />
+              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -52,7 +53,7 @@ const Index = () => {
               </ChakraLink>
             </ListItem>
             <ListItem>
-              <ListIcon icon="check-circle" color="green.500" />
+              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -63,7 +64,7 @@ const Index = () => {
               </ChakraLink>
             </ListItem>
             <ListItem>
-              <ListIcon icon="check-circle" color="green.500" />
+              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -100,11 +101,10 @@ const Index = () => {
             </NextLink>
           </Box>
         ) : null}
-        <DarkModeSwitch />
         <Footer>
           <Text>© Ansel Brandt 2020</Text>
         </Footer>
-        <CTA />
+        <CTA mainColor={mainColor} />
       </Container>
     </React.Fragment>
   );
