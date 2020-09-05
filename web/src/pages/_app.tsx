@@ -1,5 +1,8 @@
 import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import theme from "../theme";
+import Cookies from "universal-cookie";
+
+// initialColorMode added as prop to override default light mode - see below
 
 function App({ Component, pageProps, initialColorMode }: any) {
   return (
@@ -12,16 +15,19 @@ function App({ Component, pageProps, initialColorMode }: any) {
   );
 }
 
+// getInitialProps retrieves user prefered mode from cookie set by darkmode toggle
+// Chakra UI stores user preference in localstorage which is not accessible for SSR and results in hydration mismatch
+
 App.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
-  //   const { isDarkMode = "false" } = cookies(ctx);
+  const cookies = new Cookies(ctx.req.headers.cookie);
+  const isDarkMode = cookies.get("isDarkMode");
   return {
     pageProps,
-    //     initialColorMode: isDarkMode === "true" ? "dark" : "light",
-    initialColorMode: "light",
+    initialColorMode: isDarkMode === "true" ? "dark" : "light",
   };
 };
 
