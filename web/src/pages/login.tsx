@@ -10,9 +10,11 @@ import NextLink from "next/link";
 import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
-interface LoginProps {}
+interface LoginProps {
+  defaultColor: String;
+}
 
-const Login: React.FC<LoginProps> = ({}) => {
+const Login: React.FC<LoginProps> = ({ defaultColor }) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
@@ -70,7 +72,7 @@ const Login: React.FC<LoginProps> = ({}) => {
               <Box mt={4}>
                 <Button
                   type="submit"
-                  variantColor="purple"
+                  variantColor={defaultColor}
                   isLoading={isSubmitting}
                 >
                   login

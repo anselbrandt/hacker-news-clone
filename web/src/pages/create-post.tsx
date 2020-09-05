@@ -8,9 +8,11 @@ import { Layout } from "../components/Layout";
 import { useIsAuth } from "../utils/useIsAuth";
 import { withApollo } from "../utils/withApollo";
 
-interface CreatePostProps {}
+interface CreatePostProps {
+  defaultColor: String;
+}
 
-const CreatePost: React.FC<CreatePostProps> = ({}) => {
+const CreatePost: React.FC<CreatePostProps> = ({ defaultColor }) => {
   const router = useRouter();
 
   useIsAuth();
@@ -48,7 +50,7 @@ const CreatePost: React.FC<CreatePostProps> = ({}) => {
             <Box mt={4}>
               <Button
                 type="submit"
-                variantColor="purple"
+                variantColor={defaultColor}
                 isLoading={isSubmitting}
               >
                 create post

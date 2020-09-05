@@ -20,10 +20,11 @@ import { usePostsQuery } from "../generated/graphql";
 import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 
-interface IndexProps {}
+interface IndexProps {
+  defaultColor: String;
+}
 
-const Index: React.FC<IndexProps> = ({}) => {
-  const mainColor = "purple";
+const Index: React.FC<IndexProps> = ({ defaultColor }) => {
   const { data, loading } = usePostsQuery({
     variables: {
       limit: 10,
@@ -43,7 +44,7 @@ const Index: React.FC<IndexProps> = ({}) => {
 
           <List spacing={3} my={0}>
             <ListItem>
-              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
+              <ListIcon icon="check-circle" color={`${defaultColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -54,7 +55,7 @@ const Index: React.FC<IndexProps> = ({}) => {
               </ChakraLink>
             </ListItem>
             <ListItem>
-              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
+              <ListIcon icon="check-circle" color={`${defaultColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -65,7 +66,7 @@ const Index: React.FC<IndexProps> = ({}) => {
               </ChakraLink>
             </ListItem>
             <ListItem>
-              <ListIcon icon="check-circle" color={`${mainColor}.500`} />
+              <ListIcon icon="check-circle" color={`${defaultColor}.500`} />
               <ChakraLink
                 isExternal
                 href="https://anselbrandt.com"
@@ -105,7 +106,7 @@ const Index: React.FC<IndexProps> = ({}) => {
         <Footer>
           <Text>© Ansel Brandt 2020</Text>
         </Footer>
-        <CTA mainColor={mainColor} />
+        <CTA mainColor={defaultColor} />
       </Container>
     </React.Fragment>
   );

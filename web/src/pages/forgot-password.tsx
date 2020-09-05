@@ -8,9 +8,11 @@ import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 import { Layout } from "../components/Layout";
 
-interface ForgotPasswordProps {}
+interface ForgotPasswordProps {
+  defaultColor: String;
+}
 
-const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
+const ForgotPassword: React.FC<ForgotPasswordProps> = ({ defaultColor }) => {
   const [complete, setComplete] = useState(false);
   const [forgotPassword] = useForgotPasswordMutation();
   return (
@@ -44,7 +46,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
                 <Box mt={4}>
                   <Button
                     type="submit"
-                    variantColor="purple"
+                    variantColor={defaultColor}
                     isLoading={isSubmitting}
                   >
                     forgot password

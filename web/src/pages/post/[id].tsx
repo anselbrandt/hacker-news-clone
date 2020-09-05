@@ -5,9 +5,11 @@ import { Flex, Heading, Box } from "@chakra-ui/core";
 import { EditDeletePostButtons } from "../../components/EditDeletePostButtons";
 import { withApollo } from "../../utils/withApollo";
 
-interface PostProps {}
+interface PostProps {
+  defaultColor: String;
+}
 
-const Post: React.FC<PostProps> = ({}) => {
+const Post: React.FC<PostProps> = ({ defaultColor }) => {
   const { data, loading } = useGetPostFromUrl();
 
   if (loading) {

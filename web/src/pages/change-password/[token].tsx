@@ -13,9 +13,11 @@ import {
 import NextLink from "next/link";
 import { withApollo } from "../../utils/withApollo";
 
-interface ChangePasswordProps {}
+interface ChangePasswordProps {
+  defaultColor: String;
+}
 
-const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
+const ChangePassword: React.FC<ChangePasswordProps> = ({ defaultColor }) => {
   const router = useRouter();
   const [changePassword] = useChangePasswordMutation();
   const [tokenError, setTokenError] = useState("");
@@ -74,7 +76,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
             <Box mt={4}>
               <Button
                 type="submit"
-                variantColor="purple"
+                variantColor={defaultColor}
                 isLoading={isSubmitting}
               >
                 Change Password

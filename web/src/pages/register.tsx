@@ -9,9 +9,11 @@ import { useRouter } from "next/router";
 import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
-interface registerProps {}
+interface registerProps {
+  defaultColor: String;
+}
 
-const Register: React.FC<registerProps> = ({}) => {
+const Register: React.FC<registerProps> = ({ defaultColor }) => {
   const router = useRouter();
   const [register] = useRegisterMutation();
   return (
@@ -62,7 +64,7 @@ const Register: React.FC<registerProps> = ({}) => {
               <Box mt={4}>
                 <Button
                   type="submit"
-                  variantColor="purple"
+                  variantColor={defaultColor}
                   isLoading={isSubmitting}
                 >
                   register

@@ -7,9 +7,11 @@ import { UpdootSection } from "../components/UpdootSection";
 import { EditDeletePostButtons } from "../components/EditDeletePostButtons";
 import { withApollo } from "../utils/withApollo";
 
-interface PostsProps {}
+interface PostsProps {
+  defaultColor: String;
+}
 
-const Posts: React.FC<PostsProps> = ({}) => {
+const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
   const { data, error, loading, fetchMore, variables } = usePostsQuery({
     variables: {
       limit: 10,
@@ -34,7 +36,7 @@ const Posts: React.FC<PostsProps> = ({}) => {
       <Flex align="center">
         <Heading>LiReddit</Heading>
         <NextLink href="/create-post">
-          <Button as={Link} ml={"auto"}>
+          <Button as={Link} ml={"auto"} variantColor={defaultColor}>
             create post
           </Button>
         </NextLink>
@@ -73,6 +75,7 @@ const Posts: React.FC<PostsProps> = ({}) => {
       {data && data?.posts.hasMore ? (
         <Flex>
           <Button
+            variantColor={defaultColor}
             onClick={() => {
               fetchMore({
                 variables: {
@@ -80,25 +83,6 @@ const Posts: React.FC<PostsProps> = ({}) => {
                   cursor:
                     data.posts.posts[data.posts.posts.length - 1].createdAt,
                 },
-                // updateQuery: (
-                //   previousValue,
-                //   { fetchMoreResult }
-                // ): PostsQuery => {
-                //   if (!fetchMoreResult) {
-                //     return previousValue as PostsQuery;
-                //   }
-                //   return {
-                //     __typename: "Query",
-                //     posts: {
-                //       __typename: "PaginatedPosts",
-                //       hasMore: (fetchMoreResult as PostsQuery).posts.hasMore,
-                //       posts: [
-                //         ...(previousValue as PostsQuery).posts.posts,
-                //         ...(fetchMoreResult as PostsQuery).posts.posts,
-                //       ],
-                //     },
-                //   };
-                // },
               });
             }}
             isLoading={loading}
