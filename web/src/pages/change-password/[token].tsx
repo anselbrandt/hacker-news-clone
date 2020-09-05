@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NextPage } from "next";
 import { Wrapper } from "../../components/Wrapper";
 import { Formik, Form } from "formik";
 import { toErrorMap } from "../../utils/toErrorMap";
@@ -14,7 +13,9 @@ import {
 import NextLink from "next/link";
 import { withApollo } from "../../utils/withApollo";
 
-const ChangePassword: NextPage<{ token: string }> = () => {
+interface ChangePasswordProps {}
+
+const ChangePassword: React.FC<ChangePasswordProps> = ({}) => {
   const router = useRouter();
   const [changePassword] = useChangePasswordMutation();
   const [tokenError, setTokenError] = useState("");
