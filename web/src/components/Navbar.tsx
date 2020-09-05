@@ -1,18 +1,12 @@
 import React from "react";
-import {
-  Box,
-  Link,
-  Button,
-  Flex,
-  useColorMode,
-  IconButton,
-} from "@chakra-ui/core";
+import { Box, Link, Button, Flex, useColorMode } from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import { useApolloClient } from "@apollo/client";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 import { MenuDrawer } from "./MenuDrawer";
+import { HomeButton } from "./HomeButton";
 
 interface NavbarProps {
   defaultColor: string;
@@ -83,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       p={4}
       width="100%"
     >
+      <HomeButton defaultColor={defaultColor} />
       <MenuDrawer defaultColor={defaultColor} />
       <Flex justifyContent="flex-end" ml="auto">
         {body}
