@@ -18,7 +18,7 @@ function App({ Component, pageProps, initialColorMode }: any) {
 // getInitialProps retrieves user prefered mode from cookie set by darkmode toggle
 // Chakra UI stores user preference in localstorage which is not accessible for SSR and results in hydration mismatch
 
-App.getInitialProps = async ({ Component, ctx }) => {
+App.getInitialProps = async ({ Component, ctx }: any) => {
   let pageProps = {};
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
