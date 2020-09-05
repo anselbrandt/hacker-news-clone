@@ -10,7 +10,9 @@ import NextLink from "next/link";
 import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
-const Login: React.FC<{}> = ({}) => {
+interface LoginProps {}
+
+const Login: React.FC<LoginProps> = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (

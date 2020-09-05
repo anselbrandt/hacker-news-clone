@@ -7,7 +7,9 @@ import { UpdootSection } from "../components/UpdootSection";
 import { EditDeletePostButtons } from "../components/EditDeletePostButtons";
 import { withApollo } from "../utils/withApollo";
 
-const Posts: React.FC<{}> = ({}) => {
+interface PostsProps {}
+
+const Posts: React.FC<PostsProps> = ({}) => {
   const { data, error, loading, fetchMore, variables } = usePostsQuery({
     variables: {
       limit: 10,

@@ -8,7 +8,9 @@ import { Layout } from "../components/Layout";
 import { useIsAuth } from "../utils/useIsAuth";
 import { withApollo } from "../utils/withApollo";
 
-const CreatePost: React.FC<{}> = ({}) => {
+interface CreatePostProps {}
+
+const CreatePost: React.FC<CreatePostProps> = ({}) => {
   const router = useRouter();
 
   useIsAuth();

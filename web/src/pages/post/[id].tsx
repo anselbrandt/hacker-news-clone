@@ -5,7 +5,9 @@ import { Flex, Heading, Box } from "@chakra-ui/core";
 import { EditDeletePostButtons } from "../../components/EditDeletePostButtons";
 import { withApollo } from "../../utils/withApollo";
 
-const Post = ({}) => {
+interface PostProps {}
+
+const Post: React.FC<PostProps> = ({}) => {
   const { data, loading } = useGetPostFromUrl();
 
   if (loading) {

@@ -8,7 +8,9 @@ import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 import { Layout } from "../components/Layout";
 
-const ForgotPassword: React.FC<{}> = ({}) => {
+interface ForgotPasswordProps {}
+
+const ForgotPassword: React.FC<ForgotPasswordProps> = ({}) => {
   const [complete, setComplete] = useState(false);
   const [forgotPassword] = useForgotPasswordMutation();
   return (

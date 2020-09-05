@@ -20,7 +20,9 @@ import { usePostsQuery } from "../generated/graphql";
 import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 
-const Index = () => {
+interface IndexProps {}
+
+const Index: React.FC<IndexProps> = ({}) => {
   const mainColor = "purple";
   const { data, loading } = usePostsQuery({
     variables: {
