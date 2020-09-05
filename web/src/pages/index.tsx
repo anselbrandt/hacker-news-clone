@@ -33,13 +33,13 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
 
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar defaultColor={defaultColor} />
       <Container>
-        <Hero />
+        <Hero defaultColor={defaultColor} title="ansel brandt" />
         <Main>
           <Text>
-            Building the future with <Code>React.js</Code> +{" "}
-            <Code>Node.js</Code> + <Code>TypeScript</Code>.
+            Building the future with <Code>React</Code> + <Code>Node.js</Code> +{" "}
+            <Code>TypeScript</Code>
           </Text>
 
           <List spacing={3} my={0}>
@@ -106,7 +106,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
         <Footer>
           <Text>© Ansel Brandt 2020</Text>
         </Footer>
-        <CTA mainColor={defaultColor} />
+        <CTA defaultColor={defaultColor} />
       </Container>
     </React.Fragment>
   );

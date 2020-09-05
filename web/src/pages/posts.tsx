@@ -34,7 +34,7 @@ const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
   return (
     <Layout>
       <Flex align="center">
-        <Heading>Hacker News Light</Heading>
+        <Heading>News Posts</Heading>
         <NextLink href="/create-post">
           <Button as={Link} ml={"auto"} variantColor={defaultColor}>
             create post

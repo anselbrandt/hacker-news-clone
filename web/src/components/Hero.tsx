@@ -1,11 +1,16 @@
 import { Flex, Heading } from "@chakra-ui/core";
 
-export const Hero = ({ title }) => (
+interface HeroProps {
+  title: string;
+  defaultColor: string;
+}
+
+export const Hero: React.FC<HeroProps> = ({ title, defaultColor }) => (
   <Flex justifyContent="center" alignItems="center" height="100vh">
     <Heading fontSize="10vw">{title}</Heading>
   </Flex>
 );
 
 Hero.defaultProps = {
-  title: "ansel brandt",
+  title: "look ma, no hands.",
 };

@@ -1,11 +1,12 @@
 import { useColorMode, Switch, Flex, Icon } from "@chakra-ui/core";
 
 interface DarkModeSwitchProps {
-  mainColor: string;
+  defaultColor: string;
 }
 
-export const DarkModeSwitch: React.FC<DarkModeSwitchProps> = (props) => {
-  const { mainColor } = props;
+export const DarkModeSwitch: React.FC<DarkModeSwitchProps> = ({
+  defaultColor,
+}) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const handleToggleDarkMode = () => {
     toggleColorMode();
@@ -24,7 +25,7 @@ export const DarkModeSwitch: React.FC<DarkModeSwitchProps> = (props) => {
         size="md"
         isChecked={colorMode === "light"}
         onChange={() => handleToggleDarkMode()}
-        color={colorMode === "light" ? mainColor : "grey"}
+        color={colorMode === "light" ? defaultColor : "grey"}
       />
       <Icon
         ml={2}

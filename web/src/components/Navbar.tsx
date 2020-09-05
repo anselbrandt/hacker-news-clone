@@ -1,14 +1,23 @@
 import React from "react";
-import { Box, Link, Button, Flex, useColorMode } from "@chakra-ui/core";
+import {
+  Box,
+  Link,
+  Button,
+  Flex,
+  useColorMode,
+  IconButton,
+} from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import { useApolloClient } from "@apollo/client";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 
-interface NavbarProps {}
+interface NavbarProps {
+  defaultColor: string;
+}
 
-export const Navbar: React.FC<NavbarProps> = ({}) => {
+export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
   const spacing = 5;
   const { colorMode } = useColorMode();
   const bgColor = { light: "white", dark: "#171923" };
@@ -40,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
     );
   } else {
     body = (
-      <Flex justify="flex-end" mr={spacing}>
+      <Flex justify="flex-end" mr={spacing} alignItems="center">
         <NextLink href="/">
           <Link mr={spacing}>Home</Link>
         </NextLink>
@@ -62,7 +71,9 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
     );
   }
   return (
-    <Box
+    <Flex
+      direction="row"
+      alignItems="center"
       position="sticky"
       top={0}
       zIndex={1}
@@ -71,11 +82,18 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       p={4}
       width="100%"
     >
-      <Flex justifyContent="flex-end">
+      <Box>
+        <IconButton
+          variantColor={defaultColor}
+          aria-label="Search database"
+          icon="search"
+        />
+      </Box>
+      <Flex justifyContent="flex-end" ml="auto">
         {body}
-        <DarkModeSwitch mainColor={"purple"} />
+        <DarkModeSwitch defaultColor={defaultColor} />
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 

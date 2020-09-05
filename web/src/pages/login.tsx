@@ -18,7 +18,7 @@ const Login: React.FC<LoginProps> = ({ defaultColor }) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Layout>
+    <Layout defaultColor={defaultColor}>
       <Wrapper variant="small">
         <Formik
           initialValues={{ usernameOrEmail: "", password: "" }}
