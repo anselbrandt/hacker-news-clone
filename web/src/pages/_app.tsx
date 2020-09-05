@@ -23,7 +23,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
-  const cookies = new Cookies(ctx.req.headers.cookie);
+  const cookies = new Cookies(ctx.req?.headers.cookie);
   const isDarkMode = cookies.get("isDarkMode");
   return {
     pageProps,
