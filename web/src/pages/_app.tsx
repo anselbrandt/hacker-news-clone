@@ -26,7 +26,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
   const cookies = new Cookies(ctx.req?.headers.cookie);
   const isDarkMode = cookies.get("isDarkMode");
   return {
-    pageProps: { defaultColor: "pink" },
+    pageProps: { defaultColor: "purple" },
     initialColorMode: isDarkMode === "true" ? "dark" : "light",
   };
 };
