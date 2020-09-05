@@ -14,7 +14,7 @@ import NextLink from "next/link";
 import { withApollo } from "../../utils/withApollo";
 
 interface ChangePasswordProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const ChangePassword: React.FC<ChangePasswordProps> = ({ defaultColor }) => {

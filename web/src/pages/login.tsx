@@ -11,7 +11,7 @@ import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
 interface LoginProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const Login: React.FC<LoginProps> = ({ defaultColor }) => {

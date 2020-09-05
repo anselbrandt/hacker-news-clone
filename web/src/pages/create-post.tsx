@@ -9,7 +9,7 @@ import { useIsAuth } from "../utils/useIsAuth";
 import { withApollo } from "../utils/withApollo";
 
 interface CreatePostProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const CreatePost: React.FC<CreatePostProps> = ({ defaultColor }) => {

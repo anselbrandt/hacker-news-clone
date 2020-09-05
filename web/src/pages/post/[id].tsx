@@ -6,7 +6,7 @@ import { EditDeletePostButtons } from "../../components/EditDeletePostButtons";
 import { withApollo } from "../../utils/withApollo";
 
 interface PostProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const Post: React.FC<PostProps> = ({ defaultColor }) => {

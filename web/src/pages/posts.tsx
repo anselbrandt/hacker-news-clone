@@ -8,7 +8,7 @@ import { EditDeletePostButtons } from "../components/EditDeletePostButtons";
 import { withApollo } from "../utils/withApollo";
 
 interface PostsProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
@@ -34,7 +34,7 @@ const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
   return (
     <Layout>
       <Flex align="center">
-        <Heading>LiReddit</Heading>
+        <Heading>Hacker News Light</Heading>
         <NextLink href="/create-post">
           <Button as={Link} ml={"auto"} variantColor={defaultColor}>
             create post

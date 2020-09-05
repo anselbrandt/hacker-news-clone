@@ -10,7 +10,7 @@ import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
 interface registerProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const Register: React.FC<registerProps> = ({ defaultColor }) => {

@@ -9,7 +9,7 @@ import { withApollo } from "../utils/withApollo";
 import { Layout } from "../components/Layout";
 
 interface ForgotPasswordProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ defaultColor }) => {

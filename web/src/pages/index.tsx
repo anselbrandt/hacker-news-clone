@@ -21,7 +21,7 @@ import NextLink from "next/link";
 import { withApollo } from "../utils/withApollo";
 
 interface IndexProps {
-  defaultColor: String;
+  defaultColor: string;
 }
 
 const Index: React.FC<IndexProps> = ({ defaultColor }) => {

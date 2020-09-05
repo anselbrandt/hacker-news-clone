@@ -11,7 +11,11 @@ import { useGetIntId } from "../../../utils/useGetIntId";
 import { useRouter } from "next/router";
 import { withApollo } from "../../../utils/withApollo";
 
-const EditPost = ({}) => {
+interface EditPostProps {
+  defaultColor: string;
+}
+
+const EditPost: React.FC<EditPostProps> = ({ defaultColor }) => {
   const router = useRouter();
 
   const intId = useGetIntId();
@@ -62,7 +66,7 @@ const EditPost = ({}) => {
             <Box mt={4}>
               <Button
                 type="submit"
-                variantColor="purple"
+                variantColor={defaultColor}
                 isLoading={isSubmitting}
               >
                 update post
