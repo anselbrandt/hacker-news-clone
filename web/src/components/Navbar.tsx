@@ -12,6 +12,7 @@ import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import { useApolloClient } from "@apollo/client";
 import { DarkModeSwitch } from "./DarkModeSwitch";
+import { MenuDrawer } from "./MenuDrawer";
 
 interface NavbarProps {
   defaultColor: string;
@@ -82,13 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       p={4}
       width="100%"
     >
-      <Box>
-        <IconButton
-          variantColor={defaultColor}
-          aria-label="Search database"
-          icon="search"
-        />
-      </Box>
+      <MenuDrawer defaultColor={defaultColor} />
       <Flex justifyContent="flex-end" ml="auto">
         {body}
         <DarkModeSwitch defaultColor={defaultColor} />

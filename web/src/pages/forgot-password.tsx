@@ -16,7 +16,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ defaultColor }) => {
   const [complete, setComplete] = useState(false);
   const [forgotPassword] = useForgotPasswordMutation();
   return (
-    <Layout>
+    <Layout defaultColor={defaultColor}>
       <Wrapper variant="small">
         <Formik
           initialValues={{ email: "", password: "" }}

@@ -19,7 +19,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ defaultColor }) => {
 
   const [createPost] = useCreatePostMutation();
   return (
-    <Layout variant="small">
+    <Layout variant="small" defaultColor={defaultColor}>
       <Formik
         initialValues={{ title: "", text: "" }}
         onSubmit={async (values) => {

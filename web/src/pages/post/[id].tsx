@@ -13,12 +13,12 @@ const Post: React.FC<PostProps> = ({ defaultColor }) => {
   const { data, loading } = useGetPostFromUrl();
 
   if (loading) {
-    return <Layout>loading...</Layout>;
+    return <Layout defaultColor={defaultColor}>loading...</Layout>;
   }
 
   if (!data?.post) {
     return (
-      <Layout>
+      <Layout defaultColor={defaultColor}>
         <Flex justifyContent="center" mt={40}>
           that doesn't seem to be here.
         </Flex>
@@ -27,7 +27,7 @@ const Post: React.FC<PostProps> = ({ defaultColor }) => {
   }
 
   return (
-    <Layout>
+    <Layout defaultColor={defaultColor}>
       <Flex>
         <Box>
           <Heading mb={4}>{data.post.title}</Heading>

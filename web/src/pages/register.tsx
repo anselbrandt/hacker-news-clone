@@ -17,7 +17,7 @@ const Register: React.FC<registerProps> = ({ defaultColor }) => {
   const router = useRouter();
   const [register] = useRegisterMutation();
   return (
-    <Layout>
+    <Layout defaultColor={defaultColor}>
       <Wrapper variant="small">
         <Formik
           initialValues={{ email: "", username: "", password: "" }}

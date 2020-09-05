@@ -22,7 +22,7 @@ const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
 
   if (!loading && !data) {
     return (
-      <Layout>
+      <Layout defaultColor={defaultColor}>
         <Flex justifyContent="center" mt={40}>
           <div>something went wrong</div>
           <div>{error?.message}</div>
@@ -32,7 +32,7 @@ const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
   }
 
   return (
-    <Layout>
+    <Layout defaultColor={defaultColor}>
       <Flex align="center">
         <Heading>News Posts</Heading>
         <NextLink href="/create-post">

@@ -28,12 +28,12 @@ const EditPost: React.FC<EditPostProps> = ({ defaultColor }) => {
   const [updatePost] = useUpdatePostMutation();
 
   if (loading) {
-    return <Layout>loading...</Layout>;
+    return <Layout defaultColor={defaultColor}>loading...</Layout>;
   }
 
   if (!data?.post) {
     return (
-      <Layout>
+      <Layout defaultColor={defaultColor}>
         <Flex justifyContent="center" mt={40}>
           that doesn't seem to be here.
         </Flex>
@@ -42,7 +42,7 @@ const EditPost: React.FC<EditPostProps> = ({ defaultColor }) => {
   }
 
   return (
-    <Layout variant="small">
+    <Layout variant="small" defaultColor={defaultColor}>
       <Formik
         initialValues={{ title: data.post.title, text: data.post.text }}
         onSubmit={async (values) => {
