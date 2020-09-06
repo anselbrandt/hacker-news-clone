@@ -84,7 +84,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
         ) : (
           <>
             <Box justifyContent="start">
-              {data!.posts.posts.slice(0, 9).map((p) =>
+              {data?.posts.posts.slice(0, 9).map((p) =>
                 !p ? null : (
                   <Box key={p.id} mb={2}>
                     <NextLink href="/post/[id]" as={`/post/${p.id}`}>
