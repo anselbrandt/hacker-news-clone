@@ -16,8 +16,6 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
   const spacing = 5;
   const { colorMode } = useColorMode();
   const bgColor = { light: "white", dark: "#171923" };
-  // const color = { light: "white", dark: "black" };
-
   const [logout, { loading: logoutFetching }] = useLogoutMutation();
   const apolloClient = useApolloClient();
   const { data, loading } = useMeQuery({
@@ -73,7 +71,6 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       top={0}
       zIndex={1}
       bg={bgColor[colorMode]}
-      // color={color[colorMode]}
       p={4}
       width="100%"
     >
