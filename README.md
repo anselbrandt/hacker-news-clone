@@ -13,5 +13,5 @@ A basic clone of Hacker News with user registration, login authentication, posti
 - [PostgreSQL](https://www.postgresql.org)
 - [TypeORM](https://typeorm.io/)
 - [Redis](https://redis.io)
-- [Chakra UI](./docs/images/react.svg)](https://chakra-ui.com)
+- [Chakra UI](https://chakra-ui.com)
 - [TypeScript](https://www.typescriptlang.org)
