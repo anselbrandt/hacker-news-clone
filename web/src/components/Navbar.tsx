@@ -26,9 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
   } else if (!data?.me) {
     body = (
       <Flex justify="flex-end">
-        <NextLink href="/">
-          <Link mr={spacing}>Home</Link>
-        </NextLink>
         <NextLink href="/posts">
           <Link mr={spacing}>Posts</Link>
         </NextLink>
@@ -43,9 +40,6 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
   } else {
     body = (
       <Flex justify="flex-end" mr={spacing} alignItems="center">
-        <NextLink href="/">
-          <Link mr={spacing}>Home</Link>
-        </NextLink>
         <NextLink href="/posts">
           <Link mr={spacing}>Posts</Link>
         </NextLink>
@@ -71,11 +65,11 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       top={0}
       zIndex={1}
       bg={bgColor[colorMode]}
-      p={4}
+      p={1}
       width="100%"
     >
       <HomeButton defaultColor={defaultColor} />
-      <MenuDrawer defaultColor={defaultColor} />
+      {/* <MenuDrawer defaultColor={defaultColor} /> */}
       <Flex justifyContent="flex-end" ml="auto">
         {body}
         <DarkModeSwitch defaultColor={defaultColor} />

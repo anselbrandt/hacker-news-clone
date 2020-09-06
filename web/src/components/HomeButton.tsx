@@ -1,5 +1,6 @@
 import React from "react";
-import { Heading, Box } from "@chakra-ui/core";
+import { Button, Heading, Box } from "@chakra-ui/core";
+import NextLink from "next/link";
 
 interface HomeButtonProps {
   defaultColor: string;
@@ -7,10 +8,12 @@ interface HomeButtonProps {
 
 export const HomeButton: React.FC<HomeButtonProps> = ({ defaultColor }) => {
   return (
-    <Box color={defaultColor} mr={2}>
-      <Heading size="2xl" fontWeight="extrabold">
-        ab
-      </Heading>
+    <Box>
+      <NextLink href="/">
+        <Button variant="outline" variantColor={defaultColor}>
+          <Heading size="xl">ab</Heading>
+        </Button>
+      </NextLink>
     </Box>
   );
 };

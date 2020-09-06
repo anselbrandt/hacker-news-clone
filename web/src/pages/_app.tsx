@@ -1,6 +1,7 @@
 import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import theme from "../theme";
 import Cookies from "universal-cookie";
+import "./_app.css";
 
 // initialColorMode added as prop to override default light mode - see below
 
