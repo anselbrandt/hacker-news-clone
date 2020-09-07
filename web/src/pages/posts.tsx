@@ -33,7 +33,7 @@ const Posts: React.FC<PostsProps> = ({ defaultColor }) => {
 
   return (
     <Layout defaultColor={defaultColor}>
-      <Flex align="center">
+      <Flex align="center" m={2}>
         <Heading>News Posts</Heading>
         <NextLink href="/create-post">
           <Button as={Link} ml={"auto"} variantColor={defaultColor}>
