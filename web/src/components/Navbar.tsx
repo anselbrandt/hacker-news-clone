@@ -1,5 +1,18 @@
 import React from "react";
-import { Box, Link, Button, Flex, useColorMode } from "@chakra-ui/core";
+import {
+  Link,
+  Button,
+  Flex,
+  useColorMode,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+} from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
@@ -12,6 +25,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
   const bgColor = { light: "white", dark: "#171923" };
   const [logout, { loading: logoutFetching }] = useLogoutMutation();
@@ -41,18 +55,41 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
         <NextLink href="/posts">
           <Link m={4}>Posts</Link>
         </NextLink>
-        <Box m={4}>{data.me.username}</Box>
         <Button
-          m={4}
-          onClick={async () => {
-            await logout();
-            await apolloClient.resetStore();
-          }}
-          isLoading={logoutFetching}
-          variant="link"
+          onClick={onOpen}
+          mr={3}
+          variantColor={defaultColor}
+          variant="ghost"
         >
-          Logout
+          {data.me.username}
         </Button>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader></ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>Do you want to logout?</ModalBody>
+
+            <ModalFooter>
+              <Button
+                variantColor={defaultColor}
+                mr={3}
+                onClick={async () => {
+                  await logout();
+                  await apolloClient.resetStore();
+                  await onClose();
+                }}
+                isLoading={logoutFetching}
+              >
+                Logout
+              </Button>
+              <Button variant="ghost" onClick={onClose}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     );
   }
