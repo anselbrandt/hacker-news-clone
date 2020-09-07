@@ -7,22 +7,27 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  Input,
-  DrawerFooter,
+  Box,
   useDisclosure,
 } from "@chakra-ui/core";
 
 interface MenuDrawerProps {
   defaultColor: string;
+  title: string;
 }
 
-export const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor }) => {
+export const MenuDrawer: React.FC<MenuDrawerProps> = ({
+  children,
+  title,
+  defaultColor,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   return (
-    <>
+    <Box>
+      {" "}
       <Button ref={btnRef} variantColor={defaultColor} onClick={onOpen}>
-        Menu
+        {title}
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -35,13 +40,9 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor }) => {
           <DrawerCloseButton />
           <DrawerHeader>Drawer</DrawerHeader>
 
-          <DrawerBody>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </DrawerBody>
+          <DrawerBody>{children}</DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   );
 };

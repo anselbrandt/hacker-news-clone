@@ -5,7 +5,6 @@ import { useMeQuery, useLogoutMutation } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
 import { useApolloClient } from "@apollo/client";
 import { DarkModeSwitch } from "./DarkModeSwitch";
-import { MenuDrawer } from "./MenuDrawer";
 import { HomeButton } from "./HomeButton";
 
 interface NavbarProps {
@@ -13,7 +12,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
-  const spacing = 5;
   const { colorMode } = useColorMode();
   const bgColor = { light: "white", dark: "#171923" };
   const [logout, { loading: logoutFetching }] = useLogoutMutation();
@@ -27,24 +25,25 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
     body = (
       <Flex justify="flex-end">
         <NextLink href="/posts">
-          <Link mr={spacing}>Posts</Link>
+          <Link m={4}>Posts</Link>
         </NextLink>
         <NextLink href="/login">
-          <Link mr={spacing}>Login</Link>
+          <Link m={4}>Login</Link>
         </NextLink>
         <NextLink href="/register">
-          <Link mr={spacing}>Register</Link>
+          <Link m={4}>Register</Link>
         </NextLink>
       </Flex>
     );
   } else {
     body = (
-      <Flex justify="flex-end" mr={spacing} alignItems="center">
+      <Flex justify="flex-end" alignItems="center">
         <NextLink href="/posts">
-          <Link mr={spacing}>Posts</Link>
+          <Link m={4}>Posts</Link>
         </NextLink>
-        <Box mr={spacing}>{data.me.username}</Box>
+        <Box m={4}>{data.me.username}</Box>
         <Button
+          m={4}
           onClick={async () => {
             await logout();
             await apolloClient.resetStore();
@@ -69,8 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       width="100%"
     >
       <HomeButton defaultColor={defaultColor} />
-      {/* <MenuDrawer defaultColor={defaultColor} /> */}
-      <Flex justifyContent="flex-end" ml="auto">
+      <Flex justifyContent="flex-end" alignItems="center" ml="auto">
         {body}
         <DarkModeSwitch defaultColor={defaultColor} />
       </Flex>
