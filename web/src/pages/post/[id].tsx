@@ -27,7 +27,7 @@ const Post: React.FC<PostProps> = ({ defaultColor }) => {
   }
 
   return (
-    <Layout defaultColor={defaultColor}>
+    <Layout defaultColor={defaultColor} w="xl">
       <Flex>
         <Box>
           <Heading mb={4}>{data.post.title}</Heading>

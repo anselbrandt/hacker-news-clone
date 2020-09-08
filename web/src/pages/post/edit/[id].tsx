@@ -42,7 +42,7 @@ const EditPost: React.FC<EditPostProps> = ({ defaultColor }) => {
   }
 
   return (
-    <Layout variant="small" defaultColor={defaultColor}>
+    <Layout defaultColor={defaultColor} w="xl">
       <Formik
         initialValues={{ title: data.post.title, text: data.post.text }}
         onSubmit={async (values) => {

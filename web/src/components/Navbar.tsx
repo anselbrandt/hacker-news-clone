@@ -40,13 +40,13 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
     body = (
       <Flex justify="flex-end">
         <NextLink href="/posts">
-          <Link mx={2}>Posts</Link>
+          <Link>Posts</Link>
         </NextLink>
         <NextLink href="/login">
-          <Link mx={2}>Login</Link>
+          <Link>Login</Link>
         </NextLink>
         <NextLink href="/register">
-          <Link mx={2}>Register</Link>
+          <Link>Register</Link>
         </NextLink>
       </Flex>
     );

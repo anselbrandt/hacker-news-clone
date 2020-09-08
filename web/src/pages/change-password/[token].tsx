@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Wrapper } from "../../components/Wrapper";
 import { Formik, Form } from "formik";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { InputField } from "../../components/InputField";
@@ -12,6 +11,7 @@ import {
 } from "../../generated/graphql";
 import NextLink from "next/link";
 import { withApollo } from "../../utils/withApollo";
+import { Layout } from "../../components/Layout";
 
 interface ChangePasswordProps {
   defaultColor: string;
@@ -22,7 +22,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ defaultColor }) => {
   const [changePassword] = useChangePasswordMutation();
   const [tokenError, setTokenError] = useState("");
   return (
-    <Wrapper variant="small">
+    <Layout defaultColor={defaultColor} w="sm">
       <Formik
         initialValues={{ newPassword: "" }}
         onSubmit={async (values, { setErrors }) => {
@@ -85,7 +85,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ defaultColor }) => {
           </Form>
         )}
       </Formik>
-    </Wrapper>
+    </Layout>
   );
 };
 
