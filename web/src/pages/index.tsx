@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Link as ChakraLink,
   Text,
@@ -32,7 +31,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
   });
 
   return (
-    <React.Fragment>
+    <>
       <Navbar defaultColor={defaultColor} />
       <Container>
         <Hero defaultColor={defaultColor} title="ansel brandt" />
@@ -108,7 +107,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
         </Footer>
         <CTA defaultColor={defaultColor} />
       </Container>
-    </React.Fragment>
+    </>
   );
 };
 

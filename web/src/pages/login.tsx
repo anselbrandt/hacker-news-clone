@@ -64,12 +64,7 @@ const Login: React.FC<LoginProps> = ({ defaultColor }) => {
                   type="password"
                 />
               </Box>
-              <Flex mt={2}>
-                <NextLink href="/forgot-password">
-                  <Link ml={"auto"}>Forgot password?</Link>
-                </NextLink>
-              </Flex>
-              <Box mt={4}>
+              <Flex mt={4}>
                 <Button
                   type="submit"
                   variantColor={defaultColor}
@@ -77,7 +72,16 @@ const Login: React.FC<LoginProps> = ({ defaultColor }) => {
                 >
                   login
                 </Button>
-              </Box>
+                <NextLink href="/forgot-password">
+                  <Button
+                    variant="outline"
+                    variantColor={defaultColor}
+                    ml="auto"
+                  >
+                    Forgot password?
+                  </Button>
+                </NextLink>
+              </Flex>
             </Form>
           )}
         </Formik>

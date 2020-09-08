@@ -12,6 +12,7 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Box,
 } from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useMeQuery, useLogoutMutation } from "../generated/graphql";
@@ -39,13 +40,13 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
     body = (
       <Flex justify="flex-end">
         <NextLink href="/posts">
-          <Link m={4}>Posts</Link>
+          <Link mx={2}>Posts</Link>
         </NextLink>
         <NextLink href="/login">
-          <Link m={4}>Login</Link>
+          <Link mx={2}>Login</Link>
         </NextLink>
         <NextLink href="/register">
-          <Link m={4}>Register</Link>
+          <Link mx={2}>Register</Link>
         </NextLink>
       </Flex>
     );
@@ -53,11 +54,11 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
     body = (
       <Flex justify="flex-end" alignItems="center">
         <NextLink href="/posts">
-          <Link m={4}>Posts</Link>
+          <Link mx={2}>Posts</Link>
         </NextLink>
         <Button
+          mx={2}
           onClick={onOpen}
-          mr={3}
           variantColor={defaultColor}
           variant="ghost"
         >
@@ -74,7 +75,6 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
             <ModalFooter>
               <Button
                 variantColor={defaultColor}
-                mr={3}
                 onClick={async () => {
                   await logout();
                   await apolloClient.resetStore();
@@ -101,13 +101,14 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       top={0}
       zIndex={1}
       bg={bgColor[colorMode]}
-      p={1}
-      width="100%"
+      width="100vw"
     >
       <HomeButton defaultColor={defaultColor} />
       <Flex justifyContent="flex-end" alignItems="center" ml="auto">
         {body}
-        <DarkModeSwitch defaultColor={defaultColor} />
+        <Box mr={4}>
+          <DarkModeSwitch defaultColor={defaultColor} />
+        </Box>
       </Flex>
     </Flex>
   );
