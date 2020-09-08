@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
           {data.me.username}
         </Button>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size={"xs"}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader></ModalHeader>
@@ -103,12 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       bg={bgColor[colorMode]}
       width="100vw"
     >
-      <HomeButton defaultColor={defaultColor} />
-      <Flex justifyContent="flex-end" alignItems="center" ml="auto">
+      <Box m={2}>
+        <HomeButton defaultColor={defaultColor} />
+      </Box>
+      <Flex justifyContent="flex-end" alignItems="center" ml="auto" mr={2}>
         {body}
-        <Box mr={4}>
-          <DarkModeSwitch defaultColor={defaultColor} />
-        </Box>
+        <DarkModeSwitch defaultColor={defaultColor} />
       </Flex>
     </Flex>
   );
