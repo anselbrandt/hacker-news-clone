@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Wrapper } from "../components/Wrapper";
 import { Formik, Form } from "formik";
-import { Box, Button, Link } from "@chakra-ui/core";
+import { Box, Button } from "@chakra-ui/core";
 import { InputField } from "../components/InputField";
 import { useForgotPasswordMutation } from "../generated/graphql";
 import NextLink from "next/link";
