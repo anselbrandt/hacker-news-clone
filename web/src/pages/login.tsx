@@ -54,6 +54,7 @@ const Login: React.FC<LoginProps> = ({ defaultColor }) => {
                   name="usernameOrEmail"
                   placeholder="username or email"
                   label="Username or Email"
+                  autoComplete="on"
                 />
               </Box>
               <Box mt={4}>
@@ -62,6 +63,7 @@ const Login: React.FC<LoginProps> = ({ defaultColor }) => {
                   placeholder="password"
                   label="Password"
                   type="password"
+                  autoComplete="on"
                 />
               </Box>
               <Flex mt={4}>
