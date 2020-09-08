@@ -34,7 +34,9 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ defaultColor }) => {
                 </Box>
                 <Box mt={20}>
                   <NextLink href="/">
-                    <Link>Home</Link>
+                    <Button variant="outline" variantColor={defaultColor}>
+                      Home
+                    </Button>
                   </NextLink>
                 </Box>
               </Box>
