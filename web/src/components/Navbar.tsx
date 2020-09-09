@@ -71,12 +71,22 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
         display={["flex", "none", "none", "none"]}
       >
         <MenuDrawer defaultColor={defaultColor}>
-          <Box>
-            <NextLink href="/posts">
-              <Link mx={2}>Posts</Link>
+          <Box mt={6}>
+            <NextLink href="/">
+              <Link>Home</Link>
             </NextLink>
           </Box>
-          <Box mt={4}>
+          <Box mt={6}>
+            <NextLink href="/posts">
+              <Link>Posts</Link>
+            </NextLink>
+          </Box>
+          <Box mt={6}>
+            <NextLink href="/register">
+              <Link>Register</Link>
+            </NextLink>
+          </Box>
+          <Box mt={10}>
             <DarkModeSwitch defaultColor={defaultColor} />
           </Box>
         </MenuDrawer>

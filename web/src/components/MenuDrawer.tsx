@@ -59,7 +59,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor, children }) => {
 
           <DrawerBody>{children}</DrawerBody>
 
-          <DrawerFooter>
+          <DrawerFooter mb={20}>
             {data?.me ? (
               <Button
                 mr={3}
