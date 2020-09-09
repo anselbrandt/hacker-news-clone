@@ -83,11 +83,13 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
               <Link>Posts</Link>
             </NextLink>
           </Box>
-          <Box mt={6}>
-            <NextLink href="/register">
-              <Link>Register</Link>
-            </NextLink>
-          </Box>
+          {!data?.me ? (
+            <Box mt={6}>
+              <NextLink href="/register">
+                <Link>Register</Link>
+              </NextLink>
+            </Box>
+          ) : null}
           <Box mt={10}>
             <DarkModeSwitch defaultColor={defaultColor} />
           </Box>
