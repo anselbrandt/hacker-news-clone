@@ -1,96 +1,40 @@
 import React from "react";
-import {
-  Link,
-  Button,
-  Flex,
-  useColorMode,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Box,
-} from "@chakra-ui/core";
+import { Link, Flex, useColorMode, Box } from "@chakra-ui/core";
 import NextLink from "next/link";
-import { useMeQuery, useLogoutMutation } from "../generated/graphql";
+import { useMeQuery } from "../generated/graphql";
 import { isServer } from "../utils/isServer";
-import { useApolloClient } from "@apollo/client";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 import { HomeButton } from "./HomeButton";
+import LogoutModal from "./LogoutModal";
+import MenuDrawer from "./MenuDrawer";
 
 interface NavbarProps {
   defaultColor: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
   const bgColor = { light: "white", dark: "#171923" };
-  const [logout, { loading: logoutFetching }] = useLogoutMutation();
-  const apolloClient = useApolloClient();
-  const { data, loading } = useMeQuery({
+  const { data } = useMeQuery({
     skip: isServer(),
   });
   let body = null;
-  if (loading) {
-  } else if (!data?.me) {
+  if (!data?.me) {
     body = (
-      <Flex justify="flex-end">
-        <NextLink href="/posts">
-          <Link>Posts</Link>
-        </NextLink>
+      <>
         <NextLink href="/login">
           <Link>Login</Link>
         </NextLink>
         <NextLink href="/register">
           <Link>Register</Link>
         </NextLink>
-      </Flex>
+      </>
     );
   } else {
     body = (
-      <Flex justify="flex-end" alignItems="center">
-        <NextLink href="/posts">
-          <Link mx={2}>Posts</Link>
-        </NextLink>
-        <Button
-          mx={2}
-          onClick={onOpen}
-          variantColor={defaultColor}
-          variant="ghost"
-        >
-          {data.me.username}
-        </Button>
-
-        <Modal isOpen={isOpen} onClose={onClose} size={"xs"}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader></ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>Do you want to logout?</ModalBody>
-
-            <ModalFooter>
-              <Button
-                variantColor={defaultColor}
-                onClick={async () => {
-                  await logout();
-                  await apolloClient.resetStore();
-                  await onClose();
-                }}
-                isLoading={logoutFetching}
-              >
-                Logout
-              </Button>
-              <Button variant="ghost" onClick={onClose}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Flex>
+      <>
+        <LogoutModal defaultColor={defaultColor} label={data.me.username} />
+      </>
     );
   }
   return (
@@ -106,9 +50,36 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
       <Box m={2}>
         <HomeButton defaultColor={defaultColor} />
       </Box>
-      <Flex justifyContent="flex-end" alignItems="center" ml="auto" mr={2}>
+      <Flex
+        justifyContent="flex-end"
+        alignItems="center"
+        ml="auto"
+        mr={2}
+        display={["none", "flex", "flex", "flex"]}
+      >
+        <NextLink href="/posts">
+          <Link mx={2}>Posts</Link>
+        </NextLink>
         {body}
         <DarkModeSwitch defaultColor={defaultColor} />
+      </Flex>
+      <Flex
+        justifyContent="flex-end"
+        alignItems="center"
+        ml="auto"
+        mr={2}
+        display={["flex", "none", "none", "none"]}
+      >
+        <MenuDrawer defaultColor={defaultColor}>
+          <Box>
+            <NextLink href="/posts">
+              <Link mx={2}>Posts</Link>
+            </NextLink>
+          </Box>
+          <Box mt={4}>
+            <DarkModeSwitch defaultColor={defaultColor} />
+          </Box>
+        </MenuDrawer>
       </Flex>
     </Flex>
   );
