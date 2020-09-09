@@ -25,12 +25,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ defaultColor, label }) => {
 
   return (
     <>
-      <Button
-        mx={2}
-        onClick={onOpen}
-        variantColor={defaultColor}
-        variant="ghost"
-      >
+      <Button onClick={onOpen} variantColor={defaultColor} variant="ghost">
         {label}
       </Button>
 
