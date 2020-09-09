@@ -1,13 +1,18 @@
 import React from "react";
-import { TestLayout } from "../components/TestLayout";
+import { Flex } from "@chakra-ui/core";
+import { Layout } from "../components/Layout";
 import { withApollo } from "../utils/withApollo";
 
-interface TestProps {
+interface testProps {
   defaultColor: string;
 }
 
-const Test: React.FC<TestProps> = ({ defaultColor }) => {
-  return <TestLayout defaultColor={defaultColor}>Test</TestLayout>;
+const test: React.FC<testProps> = ({ defaultColor }) => {
+  return (
+    <Layout defaultColor={defaultColor}>
+      <Flex alignItems="center">test</Flex>
+    </Layout>
+  );
 };
 
-export default withApollo({ ssr: false })(Test);
+export default withApollo({ ssr: true })(test);
