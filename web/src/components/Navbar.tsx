@@ -23,10 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
     body = (
       <>
         <NextLink href="/login">
-          <Link>Login</Link>
+          <Link mr={8}>Login</Link>
         </NextLink>
         <NextLink href="/register">
-          <Link>Register</Link>
+          <Link mr={8}>Register</Link>
         </NextLink>
       </>
     );
@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ defaultColor }) => {
         display={["none", "flex", "flex", "flex"]}
       >
         <NextLink href="/posts">
-          <Link mx={2}>Posts</Link>
+          <Link mx={8}>Posts</Link>
         </NextLink>
         {body}
         <DarkModeSwitch defaultColor={defaultColor} />
