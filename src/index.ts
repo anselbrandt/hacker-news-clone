@@ -7,6 +7,7 @@ import {
   DBNAME,
   CLIENT_ORIGIN,
   DATABASE_URL,
+  REDIS_URL,
 } from "./constants";
 import path from "path";
 import express from "express";
@@ -45,7 +46,7 @@ const main = async () => {
   const app = express();
 
   const RedisStore = connectRedis(session);
-  const redis = new Redis();
+  const redis = new Redis(REDIS_URL);
 
   app.use(
     cors({

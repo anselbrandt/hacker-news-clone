@@ -9,5 +9,6 @@ export const DBNAME = process.env.DB_NAME;
 export const DBUSERNAME = process.env.DB_USER;
 export const DBPASSWORD = process.env.DB_PASS;
 export const DATABASE_URL = process.env.DATABASE_URL;
+export const REDIS_URL = process.env.REDIS_URL || `127.0.0.1:6379`;
 export const CLIENT_ORIGIN =
   process.env.CLIENT_ORIGIN || "http://localhost:3000";
