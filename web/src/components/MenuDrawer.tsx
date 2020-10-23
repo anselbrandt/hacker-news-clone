@@ -10,7 +10,6 @@ import {
   DrawerBody,
   DrawerFooter,
   useDisclosure,
-  Box,
   Flex,
 } from "@chakra-ui/core";
 import { useLogoutMutation } from "../generated/graphql";
@@ -41,7 +40,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor, children }) => {
         isOpen={isOpen}
         placement="right"
         onClose={onClose}
-        finalFocusRef={btnRef}
+        finalFocusRef={btnRef as any}
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -53,8 +52,8 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor, children }) => {
                 {data.me.username}
               </Flex>
             ) : (
-              "Menu"
-            )}
+                "Menu"
+              )}
           </DrawerHeader>
 
           <DrawerBody>{children}</DrawerBody>
@@ -74,12 +73,12 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ defaultColor, children }) => {
                 Logout
               </Button>
             ) : (
-              <NextLink href="/login">
-                <Button mr={3} variant="outline" variantColor={defaultColor}>
-                  Login
+                <NextLink href="/login">
+                  <Button mr={3} variant="outline" variantColor={defaultColor}>
+                    Login
                 </Button>
-              </NextLink>
-            )}
+                </NextLink>
+              )}
             <Button variant="outline" onClick={onClose}>
               Cancel
             </Button>

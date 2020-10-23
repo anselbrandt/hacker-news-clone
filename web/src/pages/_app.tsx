@@ -20,14 +20,16 @@ function App({ Component, pageProps, initialColorMode }: any) {
 // Chakra UI stores user preference in localstorage which is not accessible for SSR and results in hydration mismatch
 
 App.getInitialProps = async ({ Component, ctx }: any) => {
-  let pageProps = {};
+  // let pageProps = {};
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+    // pageProps = await Component.getInitialProps(ctx);
   }
   const cookies = new Cookies(ctx.req?.headers.cookie);
   const isDarkMode = cookies.get("isDarkMode");
   return {
-    pageProps: { defaultColor: "purple" },
+    pageProps: {
+      defaultColor: "purple",
+    },
     initialColorMode: isDarkMode === "true" ? "dark" : "light",
   };
 };

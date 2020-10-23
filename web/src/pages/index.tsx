@@ -34,7 +34,7 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
     <>
       <Navbar defaultColor={defaultColor} />
       <Container>
-        <Hero defaultColor={defaultColor} title="ansel brandt" />
+        <Hero title="ansel brandt" />
         <Main>
           <Text>
             Building the future with <Code>React</Code> + <Code>Node.js</Code> +{" "}
@@ -81,20 +81,20 @@ const Index: React.FC<IndexProps> = ({ defaultColor }) => {
         {!data && loading ? (
           <div>loading...</div>
         ) : (
-          <>
-            <Box justifyContent="start">
-              {data?.posts.posts.slice(0, 9).map((p) =>
-                !p ? null : (
-                  <Box key={p.id} mb={2}>
-                    <NextLink href="/post/[id]" as={`/post/${p.id}`}>
-                      <Link>{p.title}</Link>
-                    </NextLink>
-                  </Box>
-                )
-              )}
-            </Box>
-          </>
-        )}
+            <>
+              <Box justifyContent="start">
+                {data?.posts.posts.slice(0, 9).map((p) =>
+                  !p ? null : (
+                    <Box key={p.id} mb={2}>
+                      <NextLink href="/post/[id]" as={`/post/${p.id}`}>
+                        <Link>{p.title}</Link>
+                      </NextLink>
+                    </Box>
+                  )
+                )}
+              </Box>
+            </>
+          )}
         {data && !loading ? (
           <Box mt={4}>
             <NextLink href="/posts">
