@@ -8,3 +8,6 @@ export const FORGET_PASSWORD_PREFIX = "forget-password:";
 export const DBNAME = process.env.DB_NAME;
 export const DBUSERNAME = process.env.DB_USER;
 export const DBPASSWORD = process.env.DB_PASS;
+export const DATABASE_URL = process.env.DATABASE_URL;
+export const CLIENT_ORIGIN =
+  process.env.CLIENT_ORIGIN || "http://localhost:3000";

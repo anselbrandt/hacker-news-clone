@@ -30,12 +30,12 @@ const post_1 = require("./resolvers/post");
 const user_1 = require("./resolvers/user");
 const createUserLoader_1 = require("./utils/createUserLoader");
 const createUpdootLoader_1 = require("./utils/createUpdootLoader");
+const PORT = process.env.PORT || 4000;
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const conn = yield typeorm_1.createConnection({
         type: "postgres",
-        database: constants_1.DBNAME,
-        username: constants_1.DBUSERNAME,
-        password: constants_1.DBPASSWORD,
+        url: constants_1.DATABASE_URL ||
+            `postgres://${constants_1.DBUSERNAME}:${constants_1.DBPASSWORD}@localhost:5432/${constants_1.DBNAME}`,
         logging: true,
         synchronize: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
@@ -46,7 +46,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const RedisStore = connect_redis_1.default(express_session_1.default);
     const redis = new ioredis_1.default();
     app.use(cors_1.default({
-        origin: "http://localhost:3000",
+        origin: constants_1.CLIENT_ORIGIN,
         credentials: true,
     }));
     app.use(express_session_1.default({
@@ -82,8 +82,8 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         }),
     });
     apolloServer.applyMiddleware({ app, cors: false });
-    app.listen(4000, () => {
-        console.log("server started on localhost:4000");
+    app.listen(PORT, () => {
+        console.log(`server started on localhost:${PORT}`);
     });
 });
 main().catch((error) => {

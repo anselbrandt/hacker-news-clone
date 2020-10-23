@@ -5,6 +5,8 @@ import {
   DBUSERNAME,
   DBPASSWORD,
   DBNAME,
+  CLIENT_ORIGIN,
+  DATABASE_URL,
 } from "./constants";
 import path from "path";
 import express from "express";
@@ -24,12 +26,14 @@ import { UserResolver } from "./resolvers/user";
 import { createUserLoader } from "./utils/createUserLoader";
 import { createUpdootLoader } from "./utils/createUpdootLoader";
 
+const PORT = process.env.PORT || 4000;
+
 const main = async () => {
   const conn = await createConnection({
     type: "postgres",
-    database: DBNAME,
-    username: DBUSERNAME,
-    password: DBPASSWORD,
+    url:
+      DATABASE_URL ||
+      `postgres://${DBUSERNAME}:${DBPASSWORD}@localhost:5432/${DBNAME}`,
     logging: true,
     synchronize: true,
     migrations: [path.join(__dirname, "./migrations/*")],
@@ -45,7 +49,7 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: CLIENT_ORIGIN,
       credentials: true,
     })
   );
@@ -88,8 +92,8 @@ const main = async () => {
   });
   apolloServer.applyMiddleware({ app, cors: false });
 
-  app.listen(4000, () => {
-    console.log("server started on localhost:4000");
+  app.listen(PORT, () => {
+    console.log(`server started on localhost:${PORT}`);
   });
 };
 
