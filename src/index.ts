@@ -47,6 +47,7 @@ const main = async () => {
 
   const RedisStore = connectRedis(session);
   const redis = new Redis(REDIS_URL);
+  await redis.flushall();
 
   app.use(
     cors({
